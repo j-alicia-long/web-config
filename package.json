@@ -1,0 +1,22 @@
+{
+  "name": "@j-alicia-long/web-config",
+  "version": "0.1.0",
+  "description": "Shared web project config: ESLint preset + agent skills for TypeScript/React/SCSS conventions",
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint.config.js"
+  },
+  "files": ["eslint.config.js", "skills"],
+  "repository": "github:j-alicia-long/web-config",
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-check-file": "^3.3.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript-eslint": "^8.64.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9"
+  }
+}
