@@ -29,7 +29,7 @@ export default [
 ];
 ```
 
-Plugins (`typescript-eslint`, `eslint-plugin-react`, `eslint-plugin-react-hooks`, `eslint-plugin-check-file`) come as dependencies of this package — consumers only need `eslint` itself.
+Plugins (`typescript-eslint`, `@eslint-react/eslint-plugin`, `eslint-plugin-react-hooks`, `eslint-plugin-check-file`) come as dependencies of this package — consumers only need `eslint` itself.
 
 The type-aware rules (`prefer-includes`, `prefer-optional-chain`, `prefer-nullish-coalescing`) require the project's `tsconfig.json` to include every linted `.ts`/`.tsx` file.
 

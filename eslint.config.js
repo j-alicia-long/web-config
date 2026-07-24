@@ -1,7 +1,7 @@
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
+import eslintReact from "@eslint-react/eslint-plugin";
 import checkFile from "eslint-plugin-check-file";
-import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import prettier from "eslint-config-prettier";
 
@@ -50,13 +50,15 @@ const webConfig = ({ tsconfigRootDir } = {}) => [
   {
     // React conventions
     files: ["**/*.{tsx,jsx}"],
-    plugins: { react, "react-hooks": reactHooks },
-    settings: { react: { version: "detect" } },
+    plugins: {
+      ...eslintReact.configs.recommended.plugins,
+      "react-hooks": reactHooks,
+    },
     rules: {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "react/no-array-index-key": "error",
-      "react/no-unstable-nested-components": "error",
+      "@eslint-react/no-array-index-key": "error",
+      "@eslint-react/no-nested-component-definitions": "error",
     },
   },
   {
