@@ -41,8 +41,8 @@ const webConfig = ({ tsconfigRootDir } = {}) => [
         { "**/*.{ts,tsx,js,jsx}": "KEBAB_CASE" },
         { ignoreMiddleExtensions: true },
       ],
-      // Explicit over clever
-      eqeqeq: "error",
+      // Explicit over clever ("!= null" idiom allowed: it checks null AND undefined)
+      eqeqeq: ["error", "always", { null: "ignore" }],
       "no-else-return": "error", // guard clauses over if-wrapping
       "prefer-const": "error",
     },
