@@ -5,6 +5,23 @@ import checkFile from "eslint-plugin-check-file";
 import reactHooks from "eslint-plugin-react-hooks";
 import prettier from "eslint-config-prettier";
 
+const restrictedSyntax = [
+  {
+    selector: "TSEnumDeclaration",
+    message:
+      "Prefer string literal unions over enums. Disable inline only when values aren't self-descriptive (e.g. integer flags).",
+  },
+  {
+    selector: "CallExpression[callee.property.name='forEach']",
+    message:
+      "Prefer functional iteration (map/filter/reduce) or for...of over forEach.",
+  },
+  {
+    selector: "CallExpression[callee.property.name='concat']",
+    message: "Prefer array spread ([...a, ...b]) over concat.",
+  },
+];
+
 /**
  * Shared ESLint flat-config preset for web (TypeScript + React) projects.
  *
@@ -41,10 +58,16 @@ const webConfig = ({ tsconfigRootDir } = {}) => [
         { "**/*.{ts,tsx,js,jsx}": "KEBAB_CASE" },
         { ignoreMiddleExtensions: true },
       ],
+      // No index.ts barrel files — they invite circular imports
+      "check-file/filename-blocklist": [
+        "error",
+        { "**/index.{ts,tsx}": "*.{ts,tsx}" },
+      ],
       // Explicit over clever ("!= null" idiom allowed: it checks null AND undefined)
       eqeqeq: ["error", "always", { null: "ignore" }],
       "no-else-return": "error", // guard clauses over if-wrapping
       "prefer-const": "error",
+      "no-restricted-syntax": ["error", ...restrictedSyntax],
     },
   },
   {
@@ -59,6 +82,26 @@ const webConfig = ({ tsconfigRootDir } = {}) => [
       "react-hooks/exhaustive-deps": "warn",
       "@eslint-react/no-array-index-key": "error",
       "@eslint-react/no-nested-component-definitions": "error",
+      // Read reactive values reactively (router hooks re-render; window.location doesn't).
+      // Disable inline for imperative navigation in event handlers.
+      "no-restricted-properties": [
+        "error",
+        {
+          object: "window",
+          property: "location",
+          message:
+            "Read the URL via router hooks (useLocation, useSearchParams) so the component re-renders on change.",
+        },
+      ],
+      "no-restricted-syntax": [
+        "error",
+        ...restrictedSyntax,
+        {
+          selector: "JSXAttribute CallExpression[callee.name=/^use[A-Z]/]",
+          message:
+            "Don't call a hook inline as a prop value — call it in the component body and pass the result.",
+        },
+      ],
     },
   },
   {
