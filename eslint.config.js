@@ -70,7 +70,11 @@ const webConfig = ({ tsconfigRootDir } = {}) => [
     rules: {
       "@typescript-eslint/prefer-includes": "error",
       "@typescript-eslint/prefer-optional-chain": "error",
-      "@typescript-eslint/prefer-nullish-coalescing": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": [
+        "error",
+        // Boolean `a || b` is logic, not defaulting — don't force `??` there
+        { ignorePrimitives: { boolean: true } },
+      ],
     },
   },
   prettier,
