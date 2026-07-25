@@ -12,13 +12,25 @@ Shared configuration for my web (TypeScript + React + SCSS) projects. One source
 
 A rule lives in exactly one layer — the skill never repeats what the linter enforces.
 
+## Releasing
+
+Consumers pin release tags, not `master`. To cut a release:
+
+```sh
+git tag v0.x.y && git push origin v0.x.y
+```
+
+Then in each consumer: `bun remove @j-alicia-long/web-config && bun add -d github:j-alicia-long/web-config#v0.x.y` (a `postinstall` hook re-syncs the skill copy).
+
 ## ESLint preset
 
 Install as a git dependency and spread the preset:
 
 ```sh
-bun add -d github:j-alicia-long/web-config
+bun add -d github:j-alicia-long/web-config#v0.1.1
 ```
+
+Always pin a release tag so upgrades are explicit (bun caches git deps aggressively; when repinning, `bun remove` first).
 
 ```js
 // eslint.config.js
