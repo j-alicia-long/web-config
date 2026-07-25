@@ -7,7 +7,7 @@
 ## Hooks
 
 - Extract repeated state-plus-handler logic into a custom hook.
-- An object's setup and cleanup belong in the *same* effect, unless they genuinely need different dependency arrays.
+- An object's setup and cleanup belong in the _same_ effect, unless they genuinely need different dependency arrays.
 
 ## Components
 

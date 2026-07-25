@@ -4,7 +4,7 @@ For projects using plain SCSS (no CSS Modules, no Tailwind).
 
 ## Approach
 
-- Mobile-first: write base rules for small screens; media queries scale *up*.
+- Mobile-first: write base rules for small screens; media queries scale _up_.
 - Machine-checkable style rules (tokens-only colors, alphabetical properties, shallow nesting, kebab-case selectors) live in the stylelint preset — read `node_modules/@j-alicia-long/web-config/stylelint.config.js` and the project's overrides before writing styles.
 - New colors get a design token first (with a dark-mode value if the project has one), then get used via `var(--token)`.
 

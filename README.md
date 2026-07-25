@@ -2,13 +2,13 @@
 
 Shared configuration for my web (TypeScript + React + SCSS) projects. One source of truth for code conventions, split by enforcement layer:
 
-| Layer | What | Where |
-|---|---|---|
-| **ESLint preset** | Everything machine-checkable in TS/TSX (idioms, naming, React rules) | `eslint.config.js` |
-| **Stylelint preset** | Everything machine-checkable in SCSS (tokens-only colors, alphabetical properties, shallow nesting) | `stylelint.config.js` |
-| **tsconfig base** | Shared compiler strictness | `tsconfig.base.json` |
-| **Agent skill** | Judgment calls a linter can't check | `skills/web-conventions/` |
-| **Pre-commit** | Runs the layers above on every commit | documented below |
+| Layer                | What                                                                                                | Where                     |
+| -------------------- | --------------------------------------------------------------------------------------------------- | ------------------------- |
+| **ESLint preset**    | Everything machine-checkable in TS/TSX (idioms, naming, React rules)                                | `eslint.config.js`        |
+| **Stylelint preset** | Everything machine-checkable in SCSS (tokens-only colors, alphabetical properties, shallow nesting) | `stylelint.config.js`     |
+| **tsconfig base**    | Shared compiler strictness                                                                          | `tsconfig.base.json`      |
+| **Agent skill**      | Judgment calls a linter can't check                                                                 | `skills/web-conventions/` |
+| **Pre-commit**       | Runs the layers above on every commit                                                               | documented below          |
 
 A rule lives in exactly one layer — the skill never repeats what the linter enforces.
 
@@ -57,11 +57,11 @@ export default {
 // tsconfig.json
 {
   "extends": "@j-alicia-long/web-config/tsconfig.base.json",
-  "compilerOptions": { /* jsx, lib, types, paths — app-specific */ }
+  "compilerOptions": {/* jsx, lib, types, paths — app-specific */},
 }
 ```
 
-Type *checking* runs as `tsc --noEmit` in pre-commit; type-aware *linting* is part of the ESLint preset.
+Type _checking_ runs as `tsc --noEmit` in pre-commit; type-aware _linting_ is part of the ESLint preset.
 
 ## Agent skill
 

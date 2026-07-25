@@ -17,7 +17,7 @@ After changing code, run the project's lint script and fix findings before consi
 ## General principles
 
 - **Reuse before building.** Check the project's existing components, hooks, and utils before writing new ones. When creating something new, shape it to be extendable.
-- **Single source of truth.** Store each piece of data — and each *interpretation* of data (e.g. "is this item due soon") — in exactly one place. Logic computed independently in two components will diverge.
+- **Single source of truth.** Store each piece of data — and each _interpretation_ of data (e.g. "is this item due soon") — in exactly one place. Logic computed independently in two components will diverge.
 - **Explicit over clever.** Prefer a plain `if` block over chained `&&`/`||` expressions used for control flow. Prefer explicit comparisons (`val === undefined`) over truthiness checks that conflate `0`, `""`, and `false` with "missing".
 - **Declarative over imperative.** React components instead of DOM manipulation; CSS instead of measuring/drawing in JS; derive state instead of syncing it.
 

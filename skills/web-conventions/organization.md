@@ -10,7 +10,7 @@
 
 - Use guard clauses (early returns) instead of wrapping a function body in an `if`.
 - Order grouped peer items alphabetically (switch cases, config maps, exported constants) so additions have an obvious home.
-- Inline a variable used exactly once — *except* when the name documents an otherwise-magic value.
+- Inline a variable used exactly once — _except_ when the name documents an otherwise-magic value.
 - Avoid string interpolation when constructing identifiers people will search for (class names, file names, log messages). A literal string is greppable; an interpolated one is invisible.
 
 ## Comments & naming
