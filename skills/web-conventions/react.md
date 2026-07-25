@@ -19,3 +19,4 @@
 
 - Client data fetching goes through the project's data layer — don't roll ad-hoc `fetch` + `useState` loading per component.
 - Avoid storing derived data; compute it during render. Avoid state that goes stale on its own (e.g. a captured "now" timestamp — inject `now` as an argument into the logic that needs it).
+- For choosing where state lives and whether a state management library is warranted, see [state-management.md](state-management.md).
